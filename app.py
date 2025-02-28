@@ -4,6 +4,10 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+print(f"Scikit-learn: {pickle.__version__}")
+print(f"Pandas: {pd.__version__}")
+
+
 # Load the model dictionary
 with open('knn_model.pkl', 'rb') as f:
     model_data = pickle.load(f)  # Load the dictionary
