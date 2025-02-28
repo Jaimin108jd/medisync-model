@@ -4,6 +4,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 import pickle
+from joblib import dump, load
 
 # Load training data
 training_data = pd.read_csv('Training.csv')
@@ -33,6 +34,9 @@ model_data = {
     'symptoms': all_symptoms,
     'classes': knn_optimized.classes_
 }
+
+# Save with compression
+dump(model_data, 'disease_model.joblib', compress=3)
 
 with open('knn_model.pkl', 'wb') as f:
     pickle.dump(model_data, f)

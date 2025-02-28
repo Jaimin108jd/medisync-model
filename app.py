@@ -1,12 +1,15 @@
 import pandas as pd
-import pickle
+from joblib import load
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+# Load the model data
+model_data = load('disease_model.joblib')
+
 # Load the model dictionary
-with open('knn_model.pkl', 'rb') as f:
-    model_data = pickle.load(f)  # Load the dictionary
+# with open('knn_model.pkl', 'rb') as f:
+#     model_data = pickle.load(f)  # Load the dictionary
 
 # Extract components from the dictionary
 knn_model = model_data['model']
